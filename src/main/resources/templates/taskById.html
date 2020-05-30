@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Details</title>
+</head>
+<body>
+<h3>Task Details</h3>
+<p>ID: <span th:text="${task.id}"></span></p>
+<p>Title: <span th:text="${task.title}"></span></p>
+<p>Description: <span th:text="${task.description}"></span></p>
+<p>Due date: <span th:text="${task.getDueDateString()}"></span></p>
+<div th:if="${task.getSubTasks().size()} > 0">
+    <h4>Subtasks:</h4>
+    <ul th:each="subtask : ${task.getSubTasks()}">
+        <li>Titel: <span th:text="${subtask.title}"></span>
+            <br>
+            Description: <span th:text="${subtask.description}"></span>
+        </li>
+    </ul>
+</div>
+<a th:href="@{/tasks/__${task.id}__/sub/create}">Create a new subtask</a><br>
+<a href="/tasks">Go back</a>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

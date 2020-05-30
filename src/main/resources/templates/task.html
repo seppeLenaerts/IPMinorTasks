@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+<h4>Tasks</h4>
+<ul th:each="task : ${tasks}">
+    <li th:text="*{task.toString()}"></li>
+    <a th:href="@{/tasks/__${task.id}__}">Details</a>
+    <a th:href="@{/tasks/edit/__${task.id}__}">Edit this task</a>
+</ul>
+<h5><a th:href="@{/tasks/new}">Make a new task</a></h5>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

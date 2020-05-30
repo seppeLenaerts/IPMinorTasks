@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new task</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/tasks/new}">
+    <h4>Add a new task</h4>
+    <div>
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for=desc>Description: </label>
+        <input type="text" name="desc" id="desc">
+    </div>
+    <div>
+        <label for="due">Due: </label>
+        <input type="datetime-local" name="due" id="due">
+    </div>
+    <input type="submit" value="Add task">
+</form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
